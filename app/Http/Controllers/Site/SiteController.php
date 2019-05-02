@@ -62,7 +62,8 @@ class SiteController extends Controller
 
     public function lions(PostRepository $postRep, RegionRepository $regionRep, $slug)
     {
-        $region = Region::with('children')->where('slug', $slug)->firstOrFail();
+        //$region = Region::with('children')->where('slug', $slug)->firstOrFail();
+        $region = $regionRep->getRegion($slug);
 
         return view('site.lions.lions',
             [
