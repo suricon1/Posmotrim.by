@@ -1,0 +1,66 @@
+table.table form{
+    display: inline-block;
+}
+.btn {
+     border-radius: 0;
+}
+#nav .btn {
+    margin-right: 3px;
+}
+.card-title i{
+    margin-right: 10px;
+}
+#dropped-files .image {
+    position: relative;
+    height: 85px;
+    width: 85px;
+    border: 4px solid #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #fff;
+    float: left;
+    border-radius: 4px;
+    margin: 0 7px 7px 0;
+    overflow: hidden;
+}
+#uploadImagesList {
+    list-style: none;
+    padding: 0;
+}
+#uploadImagesList .item {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+#uploadImagesList .item .img-wrap {
+    width: inherit;
+    display: block;
+    height: 150px;
+}
+#uploadImagesList .item .img-wrap img{
+    width: auto;
+    height: inherit;
+}
+#uploadImagesList .item .delete-link {
+    cursor: pointer;
+    display: block;
+}
+.clear {
+    clear: both;
+}
+select.custom-select{
+    background: none;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-treeview {
+    margin-left: 20px;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-treeview>li {
+    border-bottom: solid 1px #4b545c;
+}
+.admin-post-search{
+    margin: 5px;
+    background-color: #fff;
+    padding: 5px;
+}
+.admin-post-search .input-group {
+    margin: 0!important;
+}
