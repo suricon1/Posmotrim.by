@@ -6,7 +6,7 @@
                 @foreach($item as $key => $value)
                     <li class="grouped-list">{{ $key }}</li>
                     @foreach($value as $slug => $name)
-                        <li><a href="{{ $trig ? route('site.section.tag',['region' => $region, 'tag' => $slug]) : route('site.section',['region' => $slug]) }}">{{ $name }}</a></li>
+                        <li><a href="{{ $trig ? route('site.section.tag',['region' => $region->slug, 'tag' => $slug]) : route('site.section',['region' => $slug]) }}">{{ $name }}</a></li>
                     @endforeach
                 @endforeach
             </div>

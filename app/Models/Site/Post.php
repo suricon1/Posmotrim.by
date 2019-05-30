@@ -60,19 +60,30 @@ class Post extends Model
     }
 
 //======== Relationships ================
-//    public function children()
+
+//    public function countri()
 //    {
-//        return $this->hasMany(static::class, 'grupp', 'id');
+//    	return $this->belongsTo(Countri::class);
+//    }
+//
+//    public function city()
+//    {
+//        return $this->belongsTo(City::class);
 //    }
 
-    public function countri()
+    public function parent()
     {
-    	return $this->belongsTo(Countri::class);
+        return $this->belongsTo(static::class, 'grupp', 'id');
     }
 
-    public function city()
+    public function children()
     {
-        return $this->belongsTo(City::class);
+        return $this->hasMany(static::class, 'grupp', 'id');
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
     }
 
     public function author()
@@ -112,6 +123,13 @@ class Post extends Model
         return $query->where(function ($q) use ($id) {
                                 $q->orWhere('id', $id)->orWhere('grupp', $id);
                             })->orderBy('date_add', 'asc');
+    }
+
+    public function scopeSort($query, $sort = false)
+    {
+        return $sort
+            ? $query->orderBy($sort['field'], $sort['order_by'])
+            : $query->orderBy('id', 'desc');
     }
 
 //=======================================

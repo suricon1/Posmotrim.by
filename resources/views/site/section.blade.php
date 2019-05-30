@@ -5,12 +5,12 @@
 @section('desc', $section_info->meta_desc)
 
 @section('breadcrumb-content')
-    @if($postRep->city)
-        <li><a href="{{route('site.section', ['region' => $postRep->region->slug])}}">{{ $postRep->region->name }}</a>
-        </li>
-        <li class="active">{{ $postRep->city->name }}</li>
+    @if(!$postRep->tag)
+        @include('site._breadcrumb-item', ['region' => $postRep->_region->parent])
+        <li class="active">{{ $postRep->_region->name }}@if($page) Страница - {{$page}}@endif</li>
     @else
-        <li class="active">{{ $postRep->region->name }}</li>
+        @include('site._breadcrumb-item', ['region' => $postRep->_region])
+        <li class="active">{{ $postRep->tag->title }}</li>
     @endif
 @endsection
 

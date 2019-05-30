@@ -74,20 +74,17 @@ class SiteController extends Controller
             ]);
     }
 
-
     /*-------------------
         section action
     -------------------*/
     public function section(SectionSortRequest $request, PostRepository $postRep, $slug, $page = '')
     {
-        $sort = $request->get('field')
-            ? ['field' => $request->get('field'), 'order_by' => $request->get('order_by')]
-            : ['field' => 'id', 'order_by' => 'desc'];
-
         return view('site.section', [
             'section_info' => $postRep->getSectionInfo(),
-            'posts' => $postRep->getPosts($sort, $page),
-            'postRep' => $postRep
+            'posts' => $postRep->getPosts($this->getSort($request), $page),
+            'postRep' => $postRep,
+            'param' => $this->getParams($request),
+            'page' => $page
         ]);
     }
 
@@ -96,14 +93,28 @@ class SiteController extends Controller
     -----------------------*/
     public function sectionTag(SectionSortRequest $request, PostRepository $postRep, $slug, $tag_slug, $page = '')
     {
-        $sort = $request->get('field')
-            ? ['field' => $request->get('field'), 'order_by' => $request->get('order_by')]
-            : ['field' => 'id', 'order_by' => 'desc'];
-
         return view('site.section', [
             'section_info' => $postRep->getSectionInfoTag(),
-            'posts' => $postRep->getPostsTag($sort, $page),
-            'postRep' => $postRep
+            'posts' => $postRep->getPostsTag($this->getSort($request), $page),
+            'postRep' => $postRep,
+            'param' => $this->getParams($request),
+            'page' => $page
         ]);
+    }
+
+//========= Controller metods ============================
+
+    private function getSort($request)
+    {
+        return $request->get('field')
+            ? ['field' => $request->get('field'), 'order_by' => $request->get('order_by')]
+            : false;
+    }
+
+    private function getParams($request)
+    {
+        return $request->get('field')
+            ? '?field='.$request->get('field').'&order_by='.$request->get('order_by')
+            : '';
     }
 }

@@ -1,8 +1,6 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\Site\City;
-use App\Models\Site\Countri;
 use View;
 
 class MenuRepository

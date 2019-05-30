@@ -53,12 +53,12 @@ class PostRepository {
     {
         $region_id = $this->regionRep->getAllRegionId($this->_region);
         return $this->tag->posts()->
-        with('comments')->
-        active()->
-        notGrupp()->
-        whereIn('region_id', $region_id)->
-        sort($sort)->
-        paginate(10, ['*'], 'page', $page);
+            with('comments')->
+            active()->
+            notGrupp()->
+            whereIn('region_id', $region_id)->
+            sort($sort)->
+            paginate(10, ['*'], 'page', $page);
     }
 
     public function getAllTagPosts($field, $value)
@@ -70,16 +70,16 @@ class PostRepository {
     {
         $region_id = $this->regionRep->getAllRegionId($this->_region);
         return Post::with('comments')->
-        active()->
-        notGrupp()->
-        sort($sort)->
-        whereIn('region_id', $region_id)->
-        paginate(10, ['*'], 'page', $page);
+            active()->
+            notGrupp()->
+            sort($sort)->
+            whereIn('region_id', $region_id)->
+            paginate(10, ['*'], 'page', $page);
     }
 
     public function getPost($slug)
     {
-        return Post::with('region.parent', 'tags', 'comments')
+        return Post::with('region.parent.children', 'tags', 'comments')
             ->where('slug', $slug)
             ->active(is_admin())
             ->firstOrFail();
