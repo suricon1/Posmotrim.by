@@ -109,7 +109,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="product-pagination blog-pagenation">
-                    {{$posts->links('components.pagination')}}
+                    {{$posts->onEachSide(2)->links('components.pagination', ['param' => $param])}}
                 </div>
             </div>
         </div>

@@ -165,17 +165,17 @@ class Post extends Model
     	$this->delete();
     }
 
-    public function setCountri($id)
-    {
-    	$this->countri_id = $id;
-    	$this->save();
-    }
-
-    public function setCity($id)
-    {
-        $this->city_id = $id ?: 0;
-        $this->save();
-    }
+//    public function setCountri($id)
+//    {
+//    	$this->countri_id = $id;
+//    	$this->save();
+//    }
+//
+//    public function setCity($id)
+//    {
+//        $this->city_id = $id ?: 0;
+//        $this->save();
+//    }
 
     public function setTags($ids)
     {
